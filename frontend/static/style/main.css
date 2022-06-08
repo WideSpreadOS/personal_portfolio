@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gruppo';
+}
+button {
+    background-color: rgba(135, 206, 250, 0.25);
+    padding: 10px;
+}
+
+.light {
+    background-color: #ccc;
+}
+
+.dark {
+    background-color: #333;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.75rem;
+    margin-bottom: 14px;
+}
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+h3 {
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+}
+h4 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+h5 {
+    font-size: 1.75rem;
+    margin-bottom: 6px;
+}
+h6 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+p {
+    padding: 8px;
+}
+.light p, .light li, .light td {
+    color: #000;
+}
+.dark p, .dark li, .dark td {
+    color: #fff;
+}
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6,
+.light th {
+    color: #000;
+    text-shadow: 0 0 8px lightskyblue;
+}
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark th {
+    color: lightskyblue;
+    text-shadow: 0 0 2px #000;
+}
+
+i {
+    color: lightskyblue;
+    text-shadow: 0 0 3px #000;
+}
+
+.dark > input, .dark > textarea, .dark > button {
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    color: #fff;
+}
+.light > input, .light > textarea, .light > button {
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    color: #000;
+}
+#leftSide {
+    position: fixed;
+    top: 0px;
+    height: 100vh;
+    left: -21px;
+    width: 20px;
+    background-color: lime;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.6);
+}
+#rightSide {
+    position: fixed;
+    top: 0px;
+    height: 100vh;
+    right: -21px;
+    width: 20px;
+    background-color: lime;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+}
+#bottom {
+    position: fixed;
+    left: 0px;
+    height: 20px;
+    bottom: -21px;
+    width: 100vw;
+    background-color: lime;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+}
+#app {
+    padding-top: 50px;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.site-header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    display: block;
+    transition: top 0.3s;
+    height: 50px;
+    width: 100vw;
+}
+.light #mainMenu {
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.35));
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    border-bottom: outset 2px rgba(255, 255, 255, 0.5);
+}
+.dark #mainMenu {
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.25));
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    border-bottom: outset 2px rgba(255, 255, 255, 0.5);
+}
+#mainMenuTitle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    top: 5px;
+}
+.menu-icon {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 2rem;
+}
+
+.menu-button {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 2rem;
+    
+}
+#colorSchemeBtn {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+
+
+.menu-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu-links-container {
+    opacity: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.menu-item {
+    padding: 5px;
+}
+
+.light .menu-item a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #000;
+    text-shadow: 0 0 2px lightskyblue;
+}
+.dark .menu-item a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: lightskyblue;
+    text-shadow: 0 0 2px #000;
+}
+.spread-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+
+.spread-image {
+    max-width: 95vw;
+    max-height: 95vh;
+}
+.spread-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
