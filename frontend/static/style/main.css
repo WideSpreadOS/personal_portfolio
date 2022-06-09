@@ -234,7 +234,8 @@ i {
     background-color: rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(5px);
     border-radius: 16px;
-    max-width: 800px;
+    width: 800px;
+    max-width: 90vw;
     margin-top: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
@@ -253,14 +254,45 @@ i {
     align-items: center;
     justify-content: center;
 }
+
+.spread-media-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.spread-media-container > div {
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    max-height: 95vh;
+}
+
 .spread-image {
     max-width: 95vw;
     max-height: 95vh;
-    width: 300px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .spread-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.spread-video {
+    max-width: 85vw;
+    max-height: 95vh;
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.spread-video video {
     max-width: 100%;
     max-height: 100%;
     border-radius: 16px;
@@ -315,15 +347,17 @@ i {
 
 @media only screen and (orientation: landscape) {
     .spread-image {
-        max-width: 95vw;
-        max-height: 95vh;
-        width: 150px;
+        max-width: 100%;
+        max-height: 100%;
+        height: 300px;
     }
     
     .spread-image img {
-        max-width: 100%;
         max-height: 100%;
+        max-width: 100%;
         border-radius: 16px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     }
+
+
 }
