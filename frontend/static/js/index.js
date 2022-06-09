@@ -4,6 +4,9 @@ import Contact from "./views/Contact.js";
 import Projects from "./views/Projects.js";
 import ProjectView from "./views/ProjectView.js";
 
+const app = document.getElementById('app')
+
+
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
 const getParams = match => {
@@ -53,7 +56,9 @@ const router = async () => {
 
 window.addEventListener("popstate", router);
 
+const scanPage = new Event("scan", { "bubbles": true, "cancelable": false });
 document.addEventListener("DOMContentLoaded", () => {
+    document.dispatchEvent(scanPage)
     document.body.addEventListener("click", e => {
         if (e.target.matches("[data-link]")) {
             e.preventDefault();
@@ -61,9 +66,68 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+
+
     router();
 });
 
 
+console.log(app)
+app.addEventListener('onchange', () => {
+    console.log('Page was Scanned')
+    const spreadImages = app.querySelectorAll('img')
+    console.log(spreadImages)
+    spreadImages.forEach(image => {
+        console.log(image)
+        image.addEventListener('click', e => {
+            console.log(e.target)
+        })
+})
+})
 
 
+function addCustomEventListener(selector, event) {
+    let rootElement = document.querySelector('#app');
+    //since the root element is set to be body for our current dealings
+    rootElement.addEventListener(event, function (evt) {
+        var targetElement = evt.target;
+        while (targetElement != null) {
+            if (targetElement.matches(selector)) {
+                console.log(evt.path[0])
+                const img = evt.path[0]
+                const imgSrc = img.getAttribute('src')
+                console.log(imgSrc)
+                fullscreenPhoto(imgSrc)
+
+
+
+                return;
+            }
+            targetElement = targetElement.parentElement;
+        }
+    },
+        true
+    );
+}
+
+addCustomEventListener('img', 'click');
+
+
+function fullscreenPhoto(imgSrc) {
+    const fullscreenContainer = document.getElementById('fullscreenContainer')
+    fullscreenContainer.classList.toggle('hidden')
+
+    let exitBtn = document.createElement('button')
+    exitBtn.innerText = 'X'
+    exitBtn.classList.add('exit-button')
+    exitBtn.addEventListener('click', e => {
+        fullscreenContainer.removeChild(imageEl)
+        fullscreenContainer.removeChild(exitBtn)
+        fullscreenContainer.classList.toggle('hidden')
+    })
+    let imageEl = document.createElement('img')
+    imageEl.setAttribute('src', imgSrc)
+
+    fullscreenContainer.appendChild(exitBtn)
+    fullscreenContainer.appendChild(imageEl)
+}

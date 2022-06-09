@@ -49,6 +49,7 @@
         </div>
     </div>
     <div id="app"></div>
+    <div id="fullscreenContainer" class="hidden"></div>
     <div id="leftSide"></div>
     <div id="rightSide"></div>
     <div id="bottom"></div>
@@ -70,16 +71,6 @@
     })
 
 
-/*     window.onscroll = function () { scrollFunction() };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("siteHeader").style.top = "0";
-        } else {
-            document.getElementById("siteHeader").style.top = "-50px";
-        }
-    } */
-
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
@@ -90,6 +81,19 @@
         }
         prevScrollpos = currentScrollPos;
     }
+
+
+
+            // SpreadImage
+
+/*     const spreadImages = document.querySelectorAll('img')
+    console.log(spreadImages)
+    spreadImages.forEach(image => {
+        console.log(image)
+        image.addEventListener('click', e => {
+            console.log(e.target)
+        })
+    }) */
 </script>
 </body>
 </html>
