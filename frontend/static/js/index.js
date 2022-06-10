@@ -1,8 +1,9 @@
 import Landing from "./views/Landing.js";
-import About from "./views/About.js";
+import Experience from "./views/Experience.js";
 import Contact from "./views/Contact.js";
 import Projects from "./views/Projects.js";
 import ProjectView from "./views/ProjectView.js";
+import Register from "./views/Register.js";
 
 const app = document.getElementById('app')
 
@@ -26,10 +27,11 @@ const navigateTo = url => {
 const router = async () => {
     const routes = [
         { path: "/", view: Landing },
-        { path: "/about", view: About },
+        { path: "/experience", view: Experience },
         { path: "/contact", view: Contact },
         { path: "/projects", view: Projects },
         { path: "/project/:id", view: ProjectView },
+        { path: "/user/register", view: Register },
     ];
 
     // Test each route for potential match
@@ -58,6 +60,7 @@ window.addEventListener("popstate", router);
 
 const scanPage = new Event("scan", { "bubbles": true, "cancelable": false });
 document.addEventListener("DOMContentLoaded", () => {
+    
     document.dispatchEvent(scanPage)
     document.body.addEventListener("click", e => {
         if (e.target.matches("[data-link]")) {
@@ -131,3 +134,62 @@ function fullscreenPhoto(imgSrc) {
     fullscreenContainer.appendChild(exitBtn)
     fullscreenContainer.appendChild(imageEl)
 }
+
+
+
+function getFormData(selector, event) {
+    let rootElement = document.querySelector('#app');
+    //since the root element is set to be body for our current dealings
+    rootElement.addEventListener(event, function (evt) {
+        var targetElement = evt.target;
+        while (targetElement != null) {
+            if (targetElement.matches(selector)) {
+                console.log(evt.path[0])
+                const formEl = targetElement.parentElement
+                let formData = []
+                formEl.querySelectorAll('input').forEach(input => {
+                    const inputData = input.value
+                    const inputName = input.getAttribute('name')
+                    console.log(inputName)
+                    console.log(inputData)
+                    const inputObj = {
+                        "inputName": inputName,
+                        "data": inputData
+                    }
+                    formData.push(inputObj)
+                })
+                console.log(formData)
+                formData.forEach(dataSet => {
+                    console.log(dataSet)
+                })
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                    fetch('http://localhost:8000/user/register', options)
+                        .then(res => {
+                            // code to handle the response data
+                            res.json()
+
+                        }).catch(err => {
+                            // code to handle request errors
+                            console.log('Error: ', err)
+                        });
+
+                
+
+
+
+                return;
+            }
+            targetElement = targetElement.parentElement;
+        }
+    },
+        true
+    );
+}
+
+getFormData('button', 'click');

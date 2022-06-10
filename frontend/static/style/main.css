@@ -80,18 +80,35 @@ i {
     text-shadow: 0 0 3px #000;
 }
 
-.dark > input, .dark > textarea, .dark > button {
+input, textarea {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    padding: 5px;
+    background-color: transparent;
+}
+input, textarea, button {
     outline: none;
     border: none;
     border-radius: 4px;
     backdrop-filter: blur(5px);
+}
+.dark input, .dark textarea, .dark button {
+    box-shadow: 0 0 3px #fff;
     color: #fff;
 }
-.light > input, .light > textarea, .light > button {
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    backdrop-filter: blur(5px);
+.light input, .light textarea, .light button {
+    box-shadow: 0 0 3px #000;
+    color: #000;
+}
+button {
+    background-color: rgba(135, 206, 250, 0.5);
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+.dark input::placeholder, .dark textarea::placeholder {
+    color: lightskyblue;
+}
+.light input::placeholder, .light textarea::placeholder {
     color: #000;
 }
 #leftSide {
@@ -229,6 +246,27 @@ i {
     padding-top: 50px;
     padding-bottom: 100px;
 }
+
+/* SPREAD FORM */
+
+.spread-form {
+    /* background-color: lime; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.spread-form-header {
+    margin-bottom: 15px;
+}
+.spread-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
 
 .spread-card {
     background-color: rgba(0, 0, 0, 0.15);
